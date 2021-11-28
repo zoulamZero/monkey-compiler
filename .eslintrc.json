@@ -1,3 +1,7 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "eqeqeq": "error", // 用双等号直接error ，也可以设置为warning
+    "comma-dangle": "off"
+  }
 }
