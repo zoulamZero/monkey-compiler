@@ -77,7 +77,7 @@ export class MonkeyLexer {
         this.keyWordMap["else"] = new Token(this.ELSE, "else", 0);
     }
 
-    setLexingOberver(o, context) {
+    setLexingOberver(o: any, context: any) {
         if (0 !== null && 0 !== undefined) {
             this.observer = o;
             this.observerContext = context;
@@ -164,7 +164,7 @@ export class MonkeyLexer {
         return tok;
     }
 
-    notifyObserver(token) {
+    notifyObserver(token: any) {
         this.observer.notifyTokenCreation(
             token,
             this.observerContext,
