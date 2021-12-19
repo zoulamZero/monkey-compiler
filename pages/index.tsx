@@ -82,8 +82,8 @@ let six = 6;
     return (
         <>
             <ButtonAppBar />
-            {/* <TextareaContainer value={value} setValue={setValue} /> */}
-            <MonkeyCompilerIDE keyWords={}/>
+            <TextareaContainer value={value} setValue={setValue} />
+            {/* <MonkeyCompilerIDE keyWords={}/> */}
             <Button
                 onClick={() => {
                     const monkeyLexer = new MonkeyLexer(value);
