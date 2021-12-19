@@ -4,6 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import { ButtonAppBar } from "../src/components/AppBar";
+import { MonkeyCompilerIDE } from "../src/components/MonkeyCompilerIDE";
 import { TextareaContainer } from "../src/components/TextArea";
 import { MonkeyLexer } from "../src/utils/MonkeyLexer";
 import styles from "../styles/Home.module.css";
@@ -77,12 +78,12 @@ import styles from "../styles/Home.module.css";
 const Home = () => {
     const [value, setValue] = useState(`let five = 5;
 let six = 6;
-`
-);
+`);
     return (
         <>
             <ButtonAppBar />
-            <TextareaContainer value={value} setValue={setValue} />
+            {/* <TextareaContainer value={value} setValue={setValue} /> */}
+            <MonkeyCompilerIDE keyWords={}/>
             <Button
                 onClick={() => {
                     const monkeyLexer = new MonkeyLexer(value);

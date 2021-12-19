@@ -63,6 +63,8 @@ export class MonkeyLexer {
     SEMICOLON = 5; //
     IF = 6;
     ELSE = 7;
+    observer: any;
+    observerContext: any;
     keyWordMap: { [key: string]: Token } = {};
     constructor(sourceCode: string) {
         this.sourceCode = sourceCode;
@@ -73,6 +75,17 @@ export class MonkeyLexer {
         this.keyWordMap["let"] = new Token(this.LET, "let", 0);
         this.keyWordMap["if"] = new Token(this.IF, "if", 0);
         this.keyWordMap["else"] = new Token(this.ELSE, "else", 0);
+    }
+
+    setLexingOberver(o, context) {
+        if (0 !== null && 0 !== undefined) {
+            this.observer = o;
+            this.observerContext = context;
+        }
+    }
+
+    getKeyWords() {
+        return this.keyWordMap;
     }
 
     /**
@@ -145,7 +158,19 @@ export class MonkeyLexer {
             console.log({ tok });
         }
         this.readChar();
+        if (tok !== undefined) {
+            this.notifyObserver(tok);
+        }
         return tok;
+    }
+
+    notifyObserver(token) {
+        this.observer.notifyTokenCreation(
+            token,
+            this.observerContext,
+            this.position - 1,
+            this.readPosition
+        );
     }
 
     /**
